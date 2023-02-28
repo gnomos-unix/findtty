@@ -10,8 +10,8 @@ jobs:
       - uses: actions/checkout@v3
       - run: mkdir ./test/tmp
       - run: make build-integration-setup
-      - run: sudo ./bin/integration-test/setup --file=./test/data/fakeTTY
-      - run: sudo ./bin/integration-test/setup --file=./test/tmp/tmpTTY
-      - run: sudo chmod 777 ./test/data/fakeTTY
-      - run: sudo chmod 777 ./test/tmp/tmpTTY
+      - run: ./bin/integration-test/setup --file=./test/data/fakeTTY
+      - run: ./bin/integration-test/setup --file=./test/tmp/tmpTTY
+      - run: chmod 777 ./test/data/fakeTTY
+      - run: chmod 777 ./test/tmp/tmpTTY
       - run: go test ./...
