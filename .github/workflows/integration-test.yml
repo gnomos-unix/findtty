@@ -1,0 +1,17 @@
+name: integration-test
+run-name: Integration test for findtty application
+on: [push]
+
+jobs:
+  integration-test:
+    runs-on: ubuntu-latest
+    container: golang:1.20.1
+    steps:
+      - uses: actions/checkout@v3
+      - run: mkdir ./test/tmp
+      - run: make build-integration-setup
+      - run: sudo ./bin/integration-test/setup --file=./test/data/fakeTTY
+      - run: sudo ./bin/integration-test/setup --file=./test/tmp/tmpTTY
+      - run: sudo chmod 777 ./test/data/fakeTTY
+      - run: sudo chmod 777 ./test/tmp/tmpTTY
+      - run: go test ./...
