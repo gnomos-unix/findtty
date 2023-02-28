@@ -14,4 +14,5 @@ jobs:
       - run: ./bin/integration-test/setup --file=./test/tmp/tmpTTY
       - run: chmod 777 ./test/data/fakeTTY
       - run: chmod 777 ./test/tmp/tmpTTY
+      - run: ls -lh
       - run: go test ./...
